@@ -20,3 +20,6 @@ phases:
       - echo build Docker image complete `date`
       - echo push latest Docker images to ECR...
       - docker push $IMAGE_REPO_NAME:latest
+      - printf '[{"name":"web","imageUri":"%s"}]' $IMAGE_REPO_NAME:latest > imagedefinitions.json
+artifacts:
+    files: imagedefinitions.json
