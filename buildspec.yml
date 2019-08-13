@@ -15,13 +15,13 @@ phases:
       - cd src
       - docker build -t node-app:latest .
       - docker tag node-app:latest $IMAGE_REPO_NAME:latest
-      - printf '[{"name":"web","imageUri":"%s"}]' $IMAGE_REPO_NAME:latest > imagedefinitions.json
+#      - printf '[{"name":"web","imageUri":"%s"}]' $IMAGE_REPO_NAME:latest > imagedefinitions.json
   post_build:
     commands:
       - echo build Docker image complete `date`
       - echo push latest Docker images to ECR...
       - docker push $IMAGE_REPO_NAME:latest
-      - printf '[{"name":"web","imageUri":"%s"}]' $IMAGE_REPO_NAME:latest > imagedefinitions.json
+      - printf '[{"name":"web","imageUri":"%s"}]' $IMAGE_REPO_NAME:latest > $CODEBUILD_SRC_DIR/imagedefinitions.json
 artifacts:
     files:
       - imagedefinitions.json
