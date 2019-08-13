@@ -15,6 +15,7 @@ phases:
       - cd src
       - docker build -t node-app:latest .
       - docker tag node-app:latest $IMAGE_REPO_NAME:latest
+      - printf '[{"name":"web","imageUri":"%s"}]' $IMAGE_REPO_NAME:latest > imagedefinitions.json
   post_build:
     commands:
       - echo build Docker image complete `date`
@@ -22,4 +23,5 @@ phases:
       - docker push $IMAGE_REPO_NAME:latest
       - printf '[{"name":"web","imageUri":"%s"}]' $IMAGE_REPO_NAME:latest > imagedefinitions.json
 artifacts:
-    files: imagedefinitions.json
+    files:
+      - imagedefinitions.json
