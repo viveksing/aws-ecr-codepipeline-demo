@@ -10,4 +10,4 @@ app.get('/health', (req, res) => {
 });
 
 app.listen(PORT, HOST);
-console.log(`Running API on port: ${PORT}`);
+console.log(`Running API Server on port: ${PORT}`);
