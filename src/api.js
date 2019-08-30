@@ -6,7 +6,7 @@ const HOST = '0.0.0.0';
 
 const app = express();
 app.get('/health', (req, res) => {
-  res.send('The API v7 is healthy, thanks for checking!\n');
+  res.send('The API v8 is healthy, thanks for checking!\n');
 });
 
 app.listen(PORT, HOST);
